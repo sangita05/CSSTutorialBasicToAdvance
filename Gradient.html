@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project3 Gradient</title>
+    <style>
+        body{
+            height: 100vh;
+            background-image: linear-gradient( 
+                to right top,
+                #051937,
+                #004d7a,   
+                #008793,
+                #00bf72,
+                #a8eb12);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        div{
+            text-align: center;
+        }
+
+        #myButton{
+            width: 35%;
+            height: 8vh;
+            font-size: 15px;
+            background-color: rgb(24, 20, 23);
+            color: antiquewhite;
+            border-radius: 10px;
+            border: 2px solid whitesmoke;
+            box-shadow: 5px 5px 10px black;
+            cursor: pointer;
+
+
+        }
+        #myButton:hover{
+            color:  rgb(34, 34, 34);
+            background-color: rgb(168,235,18);;
+        }
+        #myButton2{
+            width: 35%;
+            height: 8vh;
+            font-weight: bold;
+            margin-left: 20px;
+            background-color: rgb(168,235,18);
+            font-size: 15px;
+            color: rgb(34, 34, 34);
+            border-radius: 10px;
+            border: 2px solid black;
+            box-shadow: 5px 5px 10px black;
+            cursor: pointer;
+        }
+        #myButton2:hover{
+            color:  rgb(168,235,18);
+            background-color: rgb(34, 34, 34);
+        }
+        h2{
+            /* margin-left: 20%; */
+            color: rgb(163, 175, 135);
+            text-shadow: 5px 5px 10px black;
+            text-align: center;
+
+        }
+        .copyCode{
+            width: 60%;
+            height: 8vh;
+            box-shadow: 10px 1px 1px 1px  black;
+            padding: 15PX;
+            font-weight: bold;
+            font-size: 28px;
+            color: rgb(209, 245, 117);
+            margin-left: 150px;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div>
+            <button id="myButton">#051937</button>
+            <button id="myButton2">#008793</button>
+        </div>
+        <h2>Copy your code here</h2>
+        <div class="copyCode">
+            background-image: linear-gradient(to right, rgb(92,145,229 ), rgb(152,63,198));
+        </div>
+    </section>
+
+    <script>
+        const MyButton = document.getElementById('myButton');
+        const MyButton2 = document.getElementById('myButton2');
+        const myCopyCode = document.querySelector('.copyCode');
+        let rgb = "rgb(92,145,229 )";
+        let rgb2 = "rgb(152,63,198)";
+
+        const hexValues = () => {
+            let hexValue = "0123456789abcdef";
+            let colors = "#";
+            for(let i=0; i<6; i++){
+                 colors = colors + hexValue[Math.floor(Math.random() * 16)];
+                console.log(colors);
+            }
+            return colors;
+        }
+
+        const handleButton = () =>{
+             rgb = hexValues();
+            //console.log(rgb);
+            MyButton.innerText = rgb;
+            document.body.style.backgroundImage = `linear-gradient( to right, ${rgb}, ${rgb2})`;
+            myCopyCode.innerHTML = `background-image: linear-gradient ( to right, ${rgb}, ${rgb2})`;
+        }
+
+        const handleButton2 = ()=>{
+            rgb2 = hexValues();
+           //console.log(rgb2);
+           MyButton2.innerText = rgb2;
+
+           document.body.style.backgroundImage = `linear-gradient(to right, ${rgb}, ${rgb2})`;
+           myCopyCode.innerHTML = `background-image: linear-gradient(to right, ${rgb}, ${rgb2}))`;
+
+        }
+
+        myCopyCode.addEventListener('click', ()=> {
+            navigator.clipboard.writeText(myCopyCode.innerText);
+        });
+
+        MyButton.addEventListener('click',handleButton);
+        MyButton2.addEventListener('click', handleButton2);
+    </script>
+</body>
+</html>
